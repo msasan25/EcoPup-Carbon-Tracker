@@ -1,32 +1,23 @@
+import { Routes, Route } from "react-router-dom";
+
+import Navbar from "./components/Navbar";
+
+import LandingPage from "./pages/LandingPage";
+import Dashboard from "./pages/Dashboard";
+import UploadMeal from "./pages/UploadMeal";
+import Progress from "./pages/Progress";
+
 function App() {
     return (
-        <div
-            style={{
-                minHeight: "100vh",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-                fontFamily: "Arial",
-                textAlign: "center",
-            }}
-        >
-            <h1>🌍 Carbon Compass AI</h1>
+        <div>
+            <Navbar />
 
-            <p>
-                Understand your food and transport impact.
-            </p>
-
-            <button
-                style={{
-                    padding: "12px 20px",
-                    borderRadius: "8px",
-                    border: "none",
-                    cursor: "pointer",
-                }}
-            >
-                Get Started
-            </button>
+            <Routes>
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/upload" element={<UploadMeal />} />
+                <Route path="/progress" element={<Progress />} />
+            </Routes>
         </div>
     );
 }
