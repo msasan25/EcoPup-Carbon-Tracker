@@ -148,8 +148,8 @@ export default function TransportModule() {
         <div style={{ padding: 20 }}>
 
             <div style={styles.header}>
-                <h3>🍽️ What are you eating today?</h3>
-                <p>Type anything — we understand your meal 🌱</p>
+                <h3>🚗 How are you travelling today?</h3>
+                <p>Tell us your ride — we'll calculate its impact 🌍</p>
             </div>
 
             <div style={styles.topBar}>
@@ -300,6 +300,64 @@ function AnalysisModal({ data, onClose }) {
         </div>
     );
 }
+<style>{`
+.modal{
+    background:white;
+    width:360px;
+    border-radius:24px;
+    padding:24px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,.2);
+}
+
+.bigEmoji{
+    font-size:60px;
+    margin:15px 0;
+}
+
+.ratingBox{
+    display:flex;
+    justify-content:center;
+    margin-bottom:15px;
+}
+
+.rating{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:#70C79C;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    font-weight:800;
+}
+
+.box{
+    background:#f5f8f5;
+    border-radius:14px;
+    padding:15px;
+    margin:15px 0;
+}
+
+.aiBox{
+    background:#eef8f0;
+    padding:12px;
+    border-radius:12px;
+    margin-top:10px;
+}
+
+.closeBtn{
+    flex:1;
+    height:44px;
+    border:none;
+    border-radius:12px;
+    background:#183A1F;
+    color:white;
+    cursor:pointer;
+}
+`}</style>
 function AnalysisLoader() {
     return (
         <div className="overlay">
@@ -413,6 +471,7 @@ const styles = {
         color: "white",
         border: "none",
         borderRadius: 8
-    }
+    },
+
 
 };
