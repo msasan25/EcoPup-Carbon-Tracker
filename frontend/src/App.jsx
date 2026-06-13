@@ -1,25 +1,21 @@
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
+import ImpactModule from "./pages/modules/ImpactModule";
+import MealModule from "./pages/modules/MealModule";
+import TransportModule from "./pages/modules/TransportModule";
+import ProgressModule from "./pages/modules/ProgressModule";
+
 import { Routes, Route } from "react-router-dom";
 
-import Navbar from "./components/Navbar";
-
-import LandingPage from "./pages/LandingPage";
-import Dashboard from "./pages/Dashboard";
-import UploadMeal from "./pages/UploadMeal";
-import Progress from "./pages/Progress";
-
-function App() {
+export default function App() {
     return (
-        <div>
-            <Navbar />
-
-            <Routes>
-                <Route path="/" element={<LandingPage />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/upload" element={<UploadMeal />} />
-                <Route path="/progress" element={<Progress />} />
-            </Routes>
-        </div>
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/impact" element={<ImpactModule />}/>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/meal" element={<MealModule />} />
+            <Route path="/transport" element={<TransportModule />} />
+            <Route path="/progress" element={<ProgressModule />} />
+        </Routes>
     );
 }
-
-export default App;

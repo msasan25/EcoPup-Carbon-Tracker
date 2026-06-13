@@ -1,0 +1,56 @@
+{
+  "users": [
+    {
+      "username": "sphinx",
+      "logs": [
+        {
+          "type": "meal",
+          "name": "Snack",
+          "co2": 2,
+          "score": 50,
+          "message": "fallback response",
+          "createdAt": "2026-06-12T20:47:05.334Z"
+        },
+        {
+          "type": "transport",
+          "name": "Bike",
+          "co2": 1.3499999999999999,
+          "score": 73,
+          "message": "Transport analyzed",
+          "createdAt": "2026-06-12T20:47:20.431Z"
+        }
+      ],
+      "totalScore": 62
+    },
+    {
+      "username": "hello",
+      "logs": [
+        {
+          "type": "meal",
+          "name": "Snack",
+          "co2": 2,
+          "score": 50,
+          "message": "fallback response",
+          "createdAt": "2026-06-12T20:52:20.902Z"
+        },
+        {
+          "type": "meal",
+          "name": "Pizza",
+          "co2": 2,
+          "score": 50,
+          "message": "fallback response",
+          "createdAt": "2026-06-12T20:53:10.054Z"
+        },
+        {
+          "type": "meal",
+          "name": "Snack",
+          "co2": 2,
+          "score": 50,
+          "message": "fallback response",
+          "createdAt": "2026-06-12T20:53:54.643Z"
+        }
+      ],
+      "totalScore": 50
+    }
+  ]
+}
