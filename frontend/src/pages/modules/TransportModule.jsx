@@ -297,67 +297,88 @@ function AnalysisModal({ data, onClose }) {
 
                 </div>
             </div>
+
+            <style>{`
+                .overlay {
+                    position: fixed;
+                    inset: 0;
+                    background: rgba(0,0,0,0.6);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 999;
+                }
+
+                .modal {
+                    background: white;
+                    width: 360px;
+                    border-radius: 18px;
+                    padding: 20px;
+                    text-align: center;
+                    animation: pop 0.2s ease;
+                }
+
+                @keyframes pop {
+                    from { transform: scale(0.92); opacity: 0; }
+                    to { transform: scale(1); opacity: 1; }
+                }
+
+                .ratingBox {
+                    margin: 10px auto;
+                    width: 90px;
+                    height: 90px;
+                    border-radius: 50%;
+                    background: #f0f7ff;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .rating {
+                    font-size: 22px;
+                    font-weight: 800;
+                    color: #4d96ff;
+                }
+
+                .ratingLabel {
+                    font-size: 10px;
+                    opacity: 0.6;
+                }
+
+                .box {
+                    background: #f5f7fb;
+                    padding: 12px;
+                    border-radius: 10px;
+                    text-align: left;
+                    margin-top: 10px;
+                }
+
+                .aiBox {
+                    margin-top: 10px;
+                    padding: 10px;
+                    border-radius: 10px;
+                    background: #fff7e6;
+                    font-size: 13px;
+                    text-align: left;
+                }
+
+                .closeBtn {
+                    margin-top: 15px;
+                    padding: 10px 14px;
+                    border: none;
+                    border-radius: 10px;
+                    background: #4d96ff;
+                    color: white;
+                    cursor: pointer;
+                }
+            `}</style>
         </div>
     );
 }
-<style>{`
-.modal{
-    background:white;
-    width:360px;
-    border-radius:24px;
-    padding:24px;
-    text-align:center;
-    box-shadow:0 15px 40px rgba(0,0,0,.2);
-}
 
-.bigEmoji{
-    font-size:60px;
-    margin:15px 0;
-}
+     
 
-.ratingBox{
-    display:flex;
-    justify-content:center;
-    margin-bottom:15px;
-}
-
-.rating{
-    width:70px;
-    height:70px;
-    border-radius:50%;
-    background:#70C79C;
-    color:white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:30px;
-    font-weight:800;
-}
-
-.box{
-    background:#f5f8f5;
-    border-radius:14px;
-    padding:15px;
-    margin:15px 0;
-}
-
-.aiBox{
-    background:#eef8f0;
-    padding:12px;
-    border-radius:12px;
-    margin-top:10px;
-}
-
-.closeBtn{
-    flex:1;
-    height:44px;
-    border:none;
-    border-radius:12px;
-    background:#183A1F;
-    color:white;
-    cursor:pointer;
-}
-`}</style>
 function AnalysisLoader() {
     return (
         <div className="overlay">
