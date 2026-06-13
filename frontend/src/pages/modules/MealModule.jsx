@@ -373,7 +373,7 @@ export default function MealModule() {
         try {
 
             const response = await fetch(
-                "http://localhost:5000/analyze",
+                "https://ecopup-carbon-tracker.onrender.com/",
                 {
                     method: "POST",
                     headers: {
