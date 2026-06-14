@@ -40,37 +40,15 @@ Rules:
 - alternative max 1 sentence
 - no markdown
 `;
+
             const response = await ai.models.generateContent({
                 model: "gemini-2.5-flash",
                 contents: prompt
             });
 
-            console.log("FULL RESPONSE:");
-            console.log(response);
+            const text = response.text;
 
-            console.log("TEXT:");
-            console.log(response.text);
-
-            return res.json({
-                debug: response.text
-            });
-
-            let text = response.text;
-
-            console.log("RAW GEMINI:");
-            console.log(text);
-
-            text = text
-                .replace(/```json/g, "")
-                .replace(/```/g, "")
-                .trim();
-
-            console.log("RAW RESPONSE:");
-            console.log(text);
-
-            return res.json({
-                debug: text
-            });
+            const parsed = JSON.parse(text);
 
             return res.json({
                 ...parsed,
@@ -83,7 +61,6 @@ Rules:
 
         } catch (err) {
 
-            console.error("GEMINI ERROR:", err);
             console.log("Gemini failed, using fallback");
 
         }
