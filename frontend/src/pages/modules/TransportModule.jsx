@@ -352,7 +352,8 @@ function AnalysisModal({ data, onClose }) {
                                 type: "transport",
                                 name: data.vehicle || data.type,
                                 score: data.score,
-                                co2: data.co2
+                                co2: data.co2,
+                                timestamp: new Date().toISOString()
                             });
 
                             onClose();
