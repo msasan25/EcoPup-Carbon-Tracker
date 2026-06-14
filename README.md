@@ -157,24 +157,6 @@ If the AI service is unavailable, EcoPup automatically falls back to a rule-base
 
 ---
 
-## Project Structure
-
-```text
-EcoPup-Carbon-Tracker/
-
-frontend/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   ├── utils/
-│   └── App.jsx
-
-backend/
-├── server.js
-├── package.json
-└── .env
-```
-
 ## How It Works
 
 1. User enters their name.
