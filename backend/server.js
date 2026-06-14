@@ -40,10 +40,19 @@ Rules:
 - alternative max 1 sentence
 - no markdown
 `;
-
             const response = await ai.models.generateContent({
                 model: "gemini-2.5-flash",
                 contents: prompt
+            });
+
+            console.log("FULL RESPONSE:");
+            console.log(response);
+
+            console.log("TEXT:");
+            console.log(response.text);
+
+            return res.json({
+                debug: response.text
             });
 
             let text = response.text;
@@ -56,7 +65,12 @@ Rules:
                 .replace(/```/g, "")
                 .trim();
 
-            const parsed = JSON.parse(text);
+            console.log("RAW RESPONSE:");
+            console.log(text);
+
+            return res.json({
+                debug: text
+            });
 
             return res.json({
                 ...parsed,
