@@ -46,7 +46,15 @@ Rules:
                 contents: prompt
             });
 
-            const text = response.text;
+            let text = response.text;
+
+            console.log("RAW GEMINI:");
+            console.log(text);
+
+            text = text
+                .replace(/```json/g, "")
+                .replace(/```/g, "")
+                .trim();
 
             const parsed = JSON.parse(text);
 
@@ -61,6 +69,7 @@ Rules:
 
         } catch (err) {
 
+            console.error("GEMINI ERROR:", err);
             console.log("Gemini failed, using fallback");
 
         }
