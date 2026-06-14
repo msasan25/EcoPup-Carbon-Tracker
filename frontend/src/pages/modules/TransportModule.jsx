@@ -15,14 +15,88 @@ function normalize(text) {
 function detectTransportType(text) {
     const t = normalize(text);
 
-    if (t.includes("flight") || t.includes("plane") || t.includes("air")) return "flight";
-    if (t.includes("car") || t.includes("taxi") || t.includes("uber")) return "car";
-    if (t.includes("bus")) return "bus";
-    if (t.includes("metro") || t.includes("train") || t.includes("subway")) return "metro";
-    if (t.includes("bike") || t.includes("cycle")) return "bike";
-    if (t.includes("walk")) return "walk";
+    if (
+        t.includes("flight") ||
+        t.includes("plane") ||
+        t.includes("air")
+    ) {
+        return "flight";
+    }
+
+    if (
+        t.includes("car") ||
+        t.includes("sedan") ||
+        t.includes("suv") ||
+        t.includes("honda") ||
+        t.includes("hyundai") ||
+        t.includes("toyota") ||
+        t.includes("kia")
+    ) {
+        return "car";
+    }
+
+    if (
+        t.includes("bus")
+    ) {
+        return "bus";
+    }
+
+    if (
+        t.includes("metro") ||
+        t.includes("train") ||
+        t.includes("subway")
+    ) {
+        return "metro";
+    }
+
+    if (
+        t.includes("bike") ||
+        t.includes("cycle") ||
+        t.includes("scooter") ||
+        t.includes("activa") ||
+        t.includes("motorcycle")
+    ) {
+        return "bike";
+    }
+
+    if (
+        t.includes("auto") ||
+        t.includes("rickshaw")
+    ) {
+        return "bus";
+    }
+
+    if (
+        t.includes("uber auto") ||
+        t.includes("ola auto")
+    ) {
+        return "bus";
+    }
+
+    if (
+        t.includes("uber moto") ||
+        t.includes("rapido")
+    ) {
+        return "bike";
+    }
+
+    if (
+        t.includes("uber") ||
+        t.includes("ola") ||
+        t.includes("cab") ||
+        t.includes("taxi")
+    ) {
+        return "car";
+    }
+
+    if (
+        t.includes("walk")
+    ) {
+        return "walk";
+    }
 
     return "unknown";
+
 }
 
 /* ================= CARBON ENGINE ================= */
