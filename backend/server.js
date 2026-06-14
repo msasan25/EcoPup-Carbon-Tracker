@@ -48,7 +48,16 @@ Rules:
 
             const text = response.text;
 
+            let text = response.text;
+
+            text = text
+                .replace(/```json/g, "")
+                .replace(/```/g, "")
+                .trim();
+
             const parsed = JSON.parse(text);
+
+            return res.json(parsed);
 
             return res.json({
                 ...parsed,
@@ -61,9 +70,13 @@ Rules:
 
         } catch (err) {
 
-            console.log("Gemini failed, using fallback");
+          
 
-        }
+                console.error("GEMINI ERROR:", err.message);
+
+            }
+
+        
     }
     
       

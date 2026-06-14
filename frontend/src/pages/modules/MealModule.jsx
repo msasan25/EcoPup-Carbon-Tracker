@@ -331,7 +331,6 @@ export default function MealModule() {
         { name: "Burger", emoji: "🍔" },
         { name: "Pizza", emoji: "🍕" },
         { name: "Biryani", emoji: "🍛" },
-        { name: "Coffee", emoji: "☕" },
         { name: "Oats", emoji: "🥣" },
         { name: "Salad", emoji: "🥗" }
     ];
@@ -373,8 +372,9 @@ export default function MealModule() {
         try {
 
             const response = await fetch(
+                "https://ecopup-carbon-tracker.onrender.com/analyze",
               
-  "https://ecopup-carbon-tracker.onrender.com/analyze", 
+ 
                 {
                     method: "POST",
                     headers: {
@@ -387,7 +387,13 @@ export default function MealModule() {
                 }
             );
 
-            const data = await response.json();
+           
+
+            const text = await response.text();
+
+           
+
+            const data = JSON.parse(text);
 
             setSelected({
                 name: customMeal,
@@ -411,7 +417,7 @@ export default function MealModule() {
         } catch (err) {
 
             console.error(
-                "Gemini failed, using fallback",
+           
                 err
             );
 
