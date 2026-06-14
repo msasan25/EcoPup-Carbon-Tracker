@@ -2,29 +2,27 @@
 
 ## Overview
 
-EcoPup AI is an interactive sustainability assistant designed to help users understand and reduce their environmental impact through everyday choices.
+EcoPup AI is an AI-powered sustainability assistant designed to help users understand the environmental impact of their daily choices. By combining carbon footprint tracking, AI-driven meal analysis, transport impact assessment, and gamified progress tracking, EcoPup encourages users to build more sustainable habits in an engaging and accessible way.
 
-The application combines carbon footprint tracking, AI-powered meal analysis, transport impact assessment, achievement badges, and personalized progress tracking to encourage environmentally conscious behavior.
-
-Users interact with EcoPup, a friendly virtual companion that guides them through tracking their activities and understanding their environmental footprint.
+Users interact with EcoPup, a virtual sustainability companion that provides personalized insights, recommendations, and progress tracking throughout their environmental journey.
 
 ---
 
-## Chosen Vertical
+## Challenge Vertical
 
 **Sustainability & Climate Awareness**
 
-EcoPup AI focuses on helping individuals make informed decisions about food consumption and transportation by providing personalized environmental insights and actionable recommendations.
+EcoPup AI focuses on promoting environmentally conscious decision-making by helping users evaluate the impact of their food and transportation choices.
 
 ---
 
 ## Problem Statement
 
-Many people want to live more sustainably but struggle to understand how their daily choices impact the environment.
+Many individuals want to adopt sustainable habits but lack visibility into how their everyday actions affect the environment.
 
-Existing carbon calculators are often complex, static, or difficult to engage with regularly.
+Traditional carbon calculators are often static, difficult to use regularly, and provide little motivation for long-term engagement.
 
-EcoPup AI addresses this by making sustainability tracking:
+EcoPup AI addresses these challenges by making sustainability tracking:
 
 * Interactive
 * Personalized
@@ -36,20 +34,20 @@ EcoPup AI addresses this by making sustainability tracking:
 
 ## Solution
 
-EcoPup AI acts as a sustainability assistant that allows users to:
+EcoPup AI provides users with a simple and engaging way to track and improve their sustainability habits.
 
 ### Meal Impact Analysis
 
 Users can enter meals and receive:
 
-* AI-generated eco score
+* AI-generated sustainability scores
 * Estimated carbon footprint
-* Sustainability recommendations
-* Alternative eco-friendly choices
+* Eco-friendly recommendations
+* Alternative meal suggestions
 
 ### Transport Impact Analysis
 
-Users can track transportation methods such as:
+Users can track transportation methods including:
 
 * Walking
 * Cycling
@@ -58,31 +56,32 @@ Users can track transportation methods such as:
 * Car
 * Flight
 
-and receive corresponding carbon impact information.
+and receive environmental impact insights based on their selections.
 
-### Impact Dashboard
+### Personalized Dashboard
 
-Users can monitor:
+The dashboard allows users to monitor:
 
-* Total CO₂ footprint
+* Total carbon footprint
 * Average eco score
 * Meals logged
-* Trips logged
-* Recent activity
+* Transportation activities
+* Sustainability streaks
+* Recent activity history
 
 ### Badges & Achievements
 
-Users unlock badges based on their sustainable actions and can interact with achievement cards to learn why they earned them.
+Users unlock achievement badges by consistently making environmentally responsible choices. Interactive badge cards explain the impact behind each achievement.
 
 ### Personalized Experience
 
-EcoPup remembers the user's name, tracks streaks, and provides a customized sustainability journey.
+EcoPup remembers user preferences locally and provides a customized sustainability journey with streak tracking and progress monitoring.
 
 ---
 
 ## AI Integration
 
-EcoPup AI uses **Google Gemini 2.5 Flash** to analyze user-entered meals.
+EcoPup AI uses **Google Gemini 2.5 Flash** to analyze meal inputs and generate sustainability insights.
 
 ### AI Workflow
 
@@ -90,15 +89,15 @@ User Input
 
 ↓
 
-Frontend (React)
+React Frontend
 
 ↓
 
-Backend API (Node.js + Express)
+Express Backend API
 
 ↓
 
-Google Gemini API
+Google Gemini 2.5 Flash
 
 ↓
 
@@ -106,11 +105,35 @@ Eco Score + Carbon Estimate + Recommendations
 
 ↓
 
-Impact Card
+Impact Card Display
 
 ### Fallback System
 
-If the AI service is unavailable, EcoPup automatically falls back to a rule-based analysis engine to ensure uninterrupted functionality.
+To ensure reliability, EcoPup includes a rule-based fallback engine that automatically provides analysis when AI services are unavailable.
+
+---
+
+## System Architecture
+
+Frontend (React + Vite)
+
+↓
+
+REST API (Express.js)
+
+↓
+
+Google Gemini API
+
+↓
+
+Response Processing Layer
+
+↓
+
+Dashboard & Progress Tracking
+
+The frontend handles user interactions, visualizations, state management, and local persistence. The backend manages AI communication, response processing, and fallback logic before returning structured sustainability insights.
 
 ---
 
@@ -120,12 +143,11 @@ If the AI service is unavailable, EcoPup automatically falls back to a rule-base
 * Carbon footprint estimation
 * Transport impact tracking
 * Personalized dashboard
-* Impact summary analytics
+* Sustainability streak tracking
 * Achievement badges
-* Progress tracking
-* Daily streak system
-* Shareable impact reports
-* Responsive design
+* Impact analytics
+* Shareable sustainability summaries
+* Responsive user interface
 * EcoPup interactive mascot
 * AI fallback support
 
@@ -159,22 +181,70 @@ If the AI service is unavailable, EcoPup automatically falls back to a rule-base
 
 ## How It Works
 
-1. User enters their name.
-2. EcoPup personalizes the experience.
-3. User analyzes meals or transportation choices.
-4. AI generates sustainability insights.
-5. Activities are logged locally.
-6. Dashboard updates automatically.
-7. Users unlock badges and improve their sustainability profile.
+1. Users enter their name to personalize the experience.
+2. EcoPup creates a customized sustainability profile.
+3. Users analyze meals or transportation choices.
+4. AI generates environmental insights and recommendations.
+5. Activities are stored locally and tracked over time.
+6. The dashboard updates automatically.
+7. Users unlock achievements and monitor their progress.
+
+---
+
+## Testing
+
+### Manual Testing Performed
+
+The following workflows were manually tested:
+
+* User onboarding and personalization
+* Meal impact analysis
+* Gemini AI integration
+* AI fallback functionality
+* Transport impact analysis
+* Dashboard calculations
+* Badge unlocking system
+* Activity logging
+* Local storage persistence
+* Share functionality
+* Frontend deployment
+* Backend deployment
+
+All primary user journeys were validated on the deployed application.
+
+---
+
+## Accessibility
+
+EcoPup AI was designed with usability and accessibility in mind through:
+
+* Clear visual hierarchy
+* High-contrast interface elements
+* Responsive layouts
+* Large interactive touch targets
+* Consistent navigation patterns
+* Readable content structure
+
+Future improvements include enhanced keyboard navigation, ARIA support, and screen-reader optimization.
+
+---
+
+## Security Considerations
+
+* API keys are stored using environment variables.
+* Sensitive credentials are excluded from source control.
+* No user authentication data is collected.
+* User activity is stored locally in the browser.
+* Only the information required for meal analysis is sent to the AI service.
 
 ---
 
 ## Assumptions
 
 * Carbon footprint estimates are educational approximations.
-* User data is stored locally in the browser using localStorage.
-* AI-generated recommendations are intended for awareness and guidance purposes.
-* The application is designed as an educational sustainability assistant rather than a scientific carbon accounting tool.
+* User data is stored locally using browser localStorage.
+* AI-generated recommendations are intended for awareness and guidance.
+* EcoPup AI is designed as an educational sustainability assistant rather than a scientific carbon accounting platform.
 
 ---
 
@@ -182,25 +252,28 @@ If the AI service is unavailable, EcoPup automatically falls back to a rule-base
 
 * User authentication
 * Cloud-based data storage
-* Expanded AI sustainability coaching
-* More achievement categories
-* Community challenges
+* Advanced sustainability coaching
 * Weekly sustainability reports
-* Advanced carbon analytics
-* Social sharing cards
+* Community challenges
+* Expanded badge system
+* More detailed carbon analytics
+* Enhanced accessibility support
 
 ---
 
-## Security Considerations
+## Live Demo
 
-* API keys are stored securely using environment variables.
-* Sensitive credentials are excluded from source control.
-* No personal user data is transmitted beyond the required AI analysis request.
+Frontend: https://eco-pup-carbon-tracker.vercel.app/
+
+Backend: https://ecopup-carbon-tracker.onrender.com
+
+GitHub Repository:
+https://github.com/msasan25/EcoPup-Carbon-Tracker
 
 ---
 
 ## Author
 
-Developed as part of an AI-powered sustainability challenge submission.
+Developed as part of the Prompt Wars Virtual Challenge.
 
-EcoPup AI aims to make sustainability tracking engaging, accessible, and actionable through the combination of environmental awareness and artificial intelligence.
+EcoPup AI combines artificial intelligence, sustainability awareness, and gamification to make environmentally conscious decision-making more accessible and engaging.
