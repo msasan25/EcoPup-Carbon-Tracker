@@ -26,16 +26,29 @@ function getUserData() {
 function calculateStreak(logs) {
     if (!logs.length) return 0;
 
+    const uniqueDays = [
+        ...new Set(
+            logs.map(log =>
+                new Date(log.timestamp)
+                    .toDateString()
+            )
+        )
+    ].sort(
+        (a, b) => new Date(b) - new Date(a)
+    );
+
     let streak = 1;
 
-    for (let i = logs.length - 1; i > 0; i--) {
-        const curr = new Date(logs[i]?.timestamp || Date.now());
-        const prev = new Date(logs[i - 1]?.timestamp || Date.now());
+    for (let i = 0; i < uniqueDays.length - 1; i++) {
 
-        const diff = curr - prev;
-        const oneDay = 1000 * 60 * 60 * 24;
+        const current = new Date(uniqueDays[i]);
+        const next = new Date(uniqueDays[i + 1]);
 
-        if (diff <= oneDay) {
+        const diffDays =
+            (current - next) /
+            (1000 * 60 * 60 * 24);
+
+        if (diffDays === 1) {
             streak++;
         } else {
             break;
