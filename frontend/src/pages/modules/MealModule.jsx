@@ -172,7 +172,8 @@ function AnalysisModal({ data, onClose }) {
                                 type: "meal",
                                 name: data.name,
                                 score: data.score,
-                                co2: data.co2
+                                co2: data.co2,
+                                timestamp: new Date().toISOString()
                             });
 
                             onClose();
