@@ -474,13 +474,16 @@ export default function MealModule() {
             {/* INPUT */}
             <div style={styles.customBox}>
                 <input
+                    aria-label= "Enter meal for analysis"
                     placeholder="Try: biryani, poha, oats, pasta..."
                     value={customMeal}
                     onChange={(e) => setCustomMeal(e.target.value)}
                     style={styles.input}
                 />
 
-                <button onClick={analyzeCustom} style={styles.analyseBtn}>
+                <button
+                    aria-label= "Analyze meal"
+                    onClick={analyzeCustom} style={styles.analyseBtn}>
                     Analyse
                 </button>
             </div>

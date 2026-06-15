@@ -8,14 +8,39 @@ const ai = new GoogleGenAI({
 
 const express = require("express");
 const cors = require("cors");
+const helmet = require("helmet");
+const rateLimit = require("express-rate-limit");
+const compression = require("compression");
 
 const app = express();
 
+
+app.use(helmet());
 app.use(cors());
 app.use(express.json());
+const limiter = rateLimit({
+    windowMs: 60 * 1000,
+    max: 20,
+    message: {
+        error: "Too many requests. Please try again later."
+    }
+});
+app.use(compression());
+
+app.use(limiter);
 
 app.post("/analyze", async (req, res) => {
     const { type, itemName } = req.body || {};
+    if (
+        !itemName ||
+        typeof itemName !== "string" ||
+        itemName.trim().length === 0 ||
+        itemName.length > 500
+    ) {
+        return res.status(400).json({
+            error: "Invalid input"
+        });
+    }
     if (type === "meal") {
 
         try {
@@ -46,7 +71,7 @@ Rules:
                 contents: prompt
             });
 
-            const text = response.text;
+          
 
             let text = response.text;
 

@@ -81,6 +81,7 @@ export default function Dashboard() {
                 <div>
 
                     <button
+                        aria-label="Home"
                         style={styles.homeBtn}
                         onClick={() => navigate("/")}
                     >

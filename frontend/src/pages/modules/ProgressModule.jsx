@@ -316,6 +316,7 @@ export default function ProgressModule() {
             <div style={styles.shareSection}>
 
                 <button
+                    aria-label="Share your eco impact on social media"
                     style={styles.shareBtn}
                     onClick={() => {
 

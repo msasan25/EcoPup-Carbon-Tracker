@@ -220,7 +220,9 @@ EcoPup AI was designed with usability and accessibility in mind through:
 
 * Clear visual hierarchy
 * High-contrast interface elements
+* Descriptive form labels
 * Responsive layouts
+* Keyboard-accessible controls
 * Large interactive touch targets
 * Consistent navigation patterns
 * Readable content structure
@@ -233,7 +235,10 @@ Future improvements include enhanced keyboard navigation, ARIA support, and scre
 
 * API keys are stored using environment variables.
 * Sensitive credentials are excluded from source control.
-* No user authentication data is collected.
+* A `.env.example` file is provided for secure configuration.
+* HTTP security headers are enabled using Helmet.
+* Input validation is performed before processing AI requests.
+* Sensitive credentials are excluded from source control.
 * User activity is stored locally in the browser.
 * Only the information required for meal analysis is sent to the AI service.
 

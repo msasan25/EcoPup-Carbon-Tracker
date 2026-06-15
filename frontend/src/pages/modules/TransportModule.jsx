@@ -241,6 +241,7 @@ export default function TransportModule() {
                 <label>🚗 Vehicle Type</label>
 
                 <input
+                    aria-label="Enter transport method"
                     value={vehicle}
                     onChange={(e) => setVehicle(e.target.value)}
                     placeholder="e.g. Honda City, Activa, Bus..."
@@ -252,6 +253,7 @@ export default function TransportModule() {
                 <label>📍 Distance (km)</label>
 
                 <input
+                    aria-label="Enter kms"
                     value={km}
                     onChange={(e) => setKm(e.target.value)}
                     placeholder="e.g. 25"
@@ -285,6 +287,7 @@ export default function TransportModule() {
             </div>
 
             <button
+                aria-label="Analyze transport"
                 onClick={analyze}
                 style={styles.calculateBtn}
             >
