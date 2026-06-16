@@ -370,7 +370,8 @@ const styles = {
 
     page: {
         padding: 20,
-        maxWidth: 420,
+        width: "100%",
+        maxWidth: "900px",
         margin: "0 auto"
     },
 
@@ -378,6 +379,8 @@ const styles = {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
+        flexWrap: "wrap",
+        gap: 12,
         marginBottom: 20
     },
 
@@ -386,7 +389,7 @@ const styles = {
             "linear-gradient(135deg,#17361f,#3f6f32)",
         color: "white",
         borderRadius: 22,
-        padding: 30,
+        padding: "clamp(20px, 4vw, 30px)",
         textAlign: "center"
     },
 
@@ -400,7 +403,7 @@ const styles = {
     },
 
     score: {
-        fontSize: 56,
+        fontSize: "clamp(40px, 8vw, 56px)",
         fontWeight: 800,
         color: "#f7b548"
     },
@@ -458,7 +461,8 @@ const styles = {
 
     badgeGrid: {
         display: "grid",
-        gridTemplateColumns: "1fr 1fr",
+        gridTemplateColumns:
+            "repeat(auto-fit, minmax(180px, 1fr))",
         gap: 14
     },
 

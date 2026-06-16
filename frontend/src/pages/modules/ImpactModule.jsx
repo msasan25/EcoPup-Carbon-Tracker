@@ -223,7 +223,8 @@ export default function ImpactModule() {
 const styles = {
 
     page: {
-        maxWidth: 420,
+        width: "100%",
+        maxWidth: "900px",
         margin: "0 auto",
         padding: 20
     },
@@ -232,12 +233,15 @@ const styles = {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
+        flexWrap: "wrap",
+        gap: 12,
         marginBottom: 20
     },
 
     grid: {
         display: "grid",
-        gridTemplateColumns: "1fr 1fr",
+        gridTemplateColumns:
+            "repeat(auto-fit, minmax(180px, 1fr))",
         gap: 12
     },
 
@@ -251,7 +255,7 @@ const styles = {
     },
 
     value: {
-        fontSize: 40,
+        fontSize: "clamp(28px, 6vw, 40px)",
         fontWeight: 800,
         color: "#27352b"
     },
@@ -299,6 +303,8 @@ const styles = {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
+        flexWrap: "wrap",
+        gap: 8,
         marginBottom: 10,
         boxShadow:
             "0 5px 15px rgba(0,0,0,.05)"

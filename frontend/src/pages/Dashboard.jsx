@@ -213,10 +213,11 @@ const styles = {
         padding: "30px",
         borderBottomLeftRadius: "28px",
         borderBottomRightRadius: "28px",
-
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
+        flexWrap: "wrap",
+        gap: "20px",
     },
 
     paw: {
@@ -226,7 +227,7 @@ const styles = {
 
     heading: {
         margin: 0,
-        fontSize: "28px",
+        fontSize: "clamp(22px, 5vw, 32px)",
     },
 
     subHeading: {
@@ -238,7 +239,7 @@ const styles = {
         background: "rgba(255,255,255,0.12)",
         borderRadius: "18px",
         padding: "15px",
-        width: "90px",
+        minWidth: "90px",
         textAlign: "center",
     },
 
@@ -258,14 +259,15 @@ const styles = {
 
     grid: {
         display: "grid",
-        gridTemplateColumns: "1fr 1fr",
+        gridTemplateColumns:
+            "repeat(auto-fit, minmax(250px, 1fr))",
         gap: "18px",
         padding: "20px",
     },
 
     card: {
         background: "white",
-        minHeight: "180px",
+        minHeight: "160px",
         borderRadius: "22px",
         padding: "20px",
         border: "3px solid",

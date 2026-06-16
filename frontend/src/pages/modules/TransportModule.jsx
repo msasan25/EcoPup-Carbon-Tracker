@@ -517,6 +517,8 @@ const styles = {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
+        flexWrap: "wrap",
+        gap: 10,
         marginBottom: 20
     },
 
@@ -526,7 +528,8 @@ const styles = {
 
     fuelGrid: {
         display: "grid",
-        gridTemplateColumns: "repeat(4,1fr)",
+        gridTemplateColumns:
+            "repeat(auto-fit, minmax(90px, 1fr))",
         gap: 12,
         marginTop: 10
     },
@@ -558,18 +561,23 @@ const styles = {
         cursor: "pointer"
     },
     input: {
-        padding: 10,
-        width: "70%",
+        padding: 12,
+        width: "100%",
+        maxWidth: "450px",
         margin: 8,
         borderRadius: 10,
-        border: "1px solid #ddd"
+        border: "1px solid #ddd",
+        boxSizing: "border-box"
     },
     analyseBtn: {
-        padding: "8px 12px",
+        width: "100%",
+        maxWidth: "450px",
+        padding: "12px",
         background: "#6BCB77",
         color: "white",
         border: "none",
-        borderRadius: 8
+        borderRadius: 8,
+        cursor: "pointer"
     },
 
 

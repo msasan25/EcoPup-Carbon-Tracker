@@ -212,6 +212,17 @@ The following workflows were manually tested:
 
 All primary user journeys were validated on the deployed application.
 
+### Automated Testing
+
+EcoPup AI includes automated frontend testing using Vitest. Current test coverage includes:
+
+* App initialization
+* Meal module functionality
+* Transport module functionality
+
+
+Run tests locally: npm test
+
 ---
 
 ## Accessibility

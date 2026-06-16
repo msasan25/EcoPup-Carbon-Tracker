@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
 
 export default function Home() {
 
@@ -26,41 +28,60 @@ export default function Home() {
 
             <div style={styles.card}>
 
-                {/* PUPPY */}
-
                 <div style={styles.puppy}>
                     🐶
                 </div>
 
-                {/* SPEECH BUBBLE */}
+                <h1 style={styles.title}>
+                    {!name
+                        ? "Hey! I'm EcoPup 🌱"
+                        : `Hey ${name}! 👋`}
+                </h1>
 
-                <div style={styles.bubble}>
+                <p style={styles.subtitle}>
+                    {!name
+                        ? "Track your environmental impact with AI-powered insights."
+                        : "Ready to track your impact?"}
+                </p>
 
-                    {!name ? (
-                        <>
-                            <h2 style={styles.title}>
-                                Hey! I'm EcoPup 🌱
-                            </h2>
+                <div style={styles.googleWrapper}>
+                    <GoogleLogin 
+                        size="large"
+                        width="350"
+                        theme="outline"
+                        shape="pill"
+                       
 
-                            <p style={styles.text}>
-                                What's your name?
-                            </p>
-                        </>
-                    ) : (
-                        <>
-                            <h2 style={styles.title}>
-                                Hey {name}! 👋
-                            </h2>
+                        onSuccess={(credentialResponse) => {
 
-                            <p style={styles.text}>
-                                Ready to track your impact?
-                            </p>
-                        </>
-                    )}
+                            const user = jwtDecode(
+                                credentialResponse.credential
+                            );
 
+                            localStorage.setItem(
+                                "eco_user",
+                                JSON.stringify({
+                                    name: user.name,
+                                    email: user.email,
+                                    picture: user.picture
+                                })
+                            );
+
+                            navigate("/dashboard");
+                        }}
+                        onError={() => {
+                            alert(
+                                "Google Sign In failed"
+                            );
+                        }}
+                    />
                 </div>
 
-                {/* INPUT */}
+                <div style={styles.divider}>
+                    <div style={styles.line}></div>
+                    <span>OR</span>
+                    <div style={styles.line}></div>
+                </div>
 
                 <input
                     aria-label="Enter your name"
@@ -68,22 +89,23 @@ export default function Home() {
                     onChange={(e) =>
                         setName(e.target.value)
                     }
-                    placeholder="Type your name..."
+                    placeholder="Enter your name"
                     style={styles.input}
                 />
-
-                {/* CTA */}
 
                 {name.trim() && (
                     <button
                         style={styles.cta}
                         onClick={handleContinue}
                     >
-                        🌍 Let's Save The Planet
+                        🐾 Continue as Guest
                     </button>
                 )}
 
-            </div>
+          
+
+        </div>
+    
 
             <style>
                 {`
@@ -122,6 +144,80 @@ export default function Home() {
 
 const styles = {
 
+    card: {
+        width: "100%",
+        maxWidth: "650px",
+        background: "white",
+        borderRadius: "28px",
+        padding: "40px",
+        textAlign: "center",
+        boxShadow:
+            "0 20px 40px rgba(0,0,0,.15)"
+    },
+
+
+    puppy: {
+        fontSize: "clamp(60px, 15vw, 90px)",
+        marginBottom: "10px",
+        animation: "float 3s ease-in-out infinite"
+    },
+
+    title: {
+        margin: 0,
+        color: "#183A1F",
+        fontSize: "clamp(28px,5vw,48px)"
+    },
+
+    subtitle: {
+        color: "#666",
+        marginTop: "12px",
+        marginBottom: "25px",
+        lineHeight: 1.5
+    },
+
+    googleWrapper: {
+        display: "flex",
+        justifyContent: "center",
+        marginBottom: "20px"
+    },
+
+    divider: {
+        display: "flex",
+        alignItems: "center",
+        gap: "12px",
+        color: "#777",
+        marginBottom: "20px"
+    },
+
+    line: {
+        flex: 1,
+        height: "1px",
+        background: "#ddd"
+    },
+
+    input: {
+        width: "100%",
+        padding: "16px",
+        borderRadius: "14px",
+        border: "1px solid #ddd",
+        outline: "none",
+        fontSize: "16px",
+        boxSizing: "border-box"
+    },
+
+    cta: {
+        width: "100%",
+        marginTop: "16px",
+        padding: "16px",
+        borderRadius: "14px",
+        border: "none",
+        background: "#FFD54F",
+        color: "#183A1F",
+        fontWeight: "700",
+        fontSize: "16px",
+        cursor: "pointer"
+    },
+
     page: {
         minHeight: "100vh",
         background:
@@ -131,58 +227,9 @@ const styles = {
         alignItems: "center",
         padding: "20px"
     },
-
-    card: {
-        width: "100%",
-        maxWidth: "450px",
-        textAlign: "center"
-    },
-
-    puppy: {
-        fontSize: "110px",
-        animation: "float 3s ease-in-out infinite"
-    },
-
-    bubble: {
-        background: "white",
-        borderRadius: "22px",
-        padding: "24px",
-        marginTop: "10px",
-        boxShadow:
-            "0 12px 30px rgba(0,0,0,.15)"
-    },
-
-    title: {
-        margin: 0,
-        color: "#183A1F"
-    },
-
-    text: {
-        marginTop: "10px",
-        color: "#555"
-    },
-
-    input: {
-        width: "100%",
-        marginTop: "25px",
-        padding: "16px",
-        borderRadius: "16px",
-        border: "none",
-        outline: "none",
-        fontSize: "16px"
-    },
-
-    cta: {
-        width: "100%",
-        marginTop: "20px",
-        padding: "16px",
-        borderRadius: "16px",
-        border: "none",
-        background: "#FFD54F",
-        color: "#17361f",
-        fontWeight: "800",
-        fontSize: "16px",
-        cursor: "pointer",
-        animation: "fadeUp .3s ease"
+    trustText: {
+        marginTop: "16px",
+        color: "#777",
+        fontSize: "clamp(12px, 3vw, 14px)"
     }
-};
+}

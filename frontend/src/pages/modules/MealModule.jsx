@@ -3,6 +3,7 @@ import { button } from "../../styles/ui";
 import { setEcoState } from "../../state/ecoStore";
 import { addEcoLog } from "../../utils/ecoLogger";
 import { useNavigate } from "react-router-dom";
+const API_URL = import.meta.env.VITE_API_URL;
 
 
 /* ================= UTILITY ================= */
@@ -103,6 +104,7 @@ function getCarbonData(type) {
 function analyzeMealInput(input) {
     const type = detectMealType(input);
     const data = getCarbonData(type);
+    
 
     return {
         ...data,
@@ -373,7 +375,9 @@ export default function MealModule() {
         try {
 
             const response = await fetch(
-                "https://ecopup-carbon-tracker.onrender.com/analyze",
+                `${API_URL}/analyze`,
+               
+             
               
  
                 {
@@ -546,31 +550,36 @@ const styles = {
         fontSize: "14px",
     },
 
-   
-        customBox: {
-            marginTop: 20,
-            textAlign: "center",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "24px"
-        }, 
+    customBox: {
+        marginTop: 20,
+        textAlign: "center",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: "16px",
+        width: "100%",
+        padding: "0 16px",
+        boxSizing: "border-box",
+    }, 
     
 
     input: {
-        padding: "10px",
-        width: "50%",
+        padding: "12px",
+        width: "100%",
+        maxWidth: "450px",
         borderRadius: "10px",
         border: "1px solid #ddd",
+        boxSizing: "border-box",
     },
 
     analyseBtn: {
-        marginTop: "10px",
-        padding: "8px 14px",
+        width: "100%",
+        maxWidth: "450px",
+        padding: "12px",
         borderRadius: "8px",
         border: "none",
         background: "#6BCB77",
         color: "white",
         cursor: "pointer",
-    }
+    },
 };
